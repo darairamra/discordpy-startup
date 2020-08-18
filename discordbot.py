@@ -8,11 +8,6 @@ client = discord.Client()
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 
-@client.event
-async def on_message(message):
-    if message.content == 'test':
-        msg = massage.author.name
-        await message.channel.send(msg)
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -26,8 +21,6 @@ async def ping(ctx):
     
 @bot.command()
 async def dii(ctx):
-    await ctx.send('bakaaho')
+    await ctx.send("バカ")
 
-client.run(token)
 bot.run(token)
-
