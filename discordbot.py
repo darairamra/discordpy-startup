@@ -25,7 +25,7 @@ async def ping(ctx):
     
 @bot.command()
 async def dii(ctx):
-    await ctx.send('baka')
+    await ctx.send('bakaaho')
 
 
 bot.run(token)
