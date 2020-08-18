@@ -10,8 +10,8 @@ token = os.environ['DISCORD_BOT_TOKEN']
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('test'):
-        msg = "失敗" + massage.author.name
+    if message.content == 'test':
+        msg = massage.author.name
         await message.channel.send(msg)
 
 @bot.event
