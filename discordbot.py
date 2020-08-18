@@ -1,8 +1,8 @@
+
 from discord.ext import commands
 import os
 import traceback
 import discord
-
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='/')
@@ -10,10 +10,9 @@ token = os.environ['DISCORD_BOT_TOKEN']
 
 @client.event
 async def on_message(message):
-    if message.content.startswith("test"):
+    if message.content.startswith('test'):
         msg = "失敗" + massage.author.name
         await message.channel.send(msg)
-
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -29,6 +28,6 @@ async def ping(ctx):
 async def dii(ctx):
     await ctx.send('bakaaho')
 
-
-bot.run(token)
 client.run(token)
+bot.run(token)
+
