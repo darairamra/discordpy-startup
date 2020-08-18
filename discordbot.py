@@ -11,7 +11,6 @@ token = os.environ['DISCORD_BOT_TOKEN']
 @client.event
 async def on_message(message):
     if message.content.startswith("test"):
-       if client.user != message.author:
         msg = "失敗" + massage.author.name
         await message.channel.send(msg)
 
