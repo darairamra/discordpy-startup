@@ -3,6 +3,9 @@ from discord.ext import commands
 import os
 import traceback
 import discord
+from urllib import parse, request
+import re
+import datetime
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='/')
@@ -22,5 +25,10 @@ async def ping(ctx):
 @bot.command()
 async def dii(ctx):
     await ctx.send("バカ")
+    
+    
+@bot.command()
+async def sum(ctx, numOne: int, numTwo: int):
+    await ctx.send(numOne + numTwo)
 
 bot.run(token)
