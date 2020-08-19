@@ -14,7 +14,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 
 @client.event
 async def on_ready():
-    channel = guild.get_channel(737270360277254)
+    channel = client.get_channel(737270360277254)
     msg = "起動完了"
     await client.send_message(channel,msg)
             
@@ -24,6 +24,6 @@ async def on_message(message):
         return
     
     if message.content.startswith('/dii'):
-        await client.send_message(message.channel,"バカ")
+        await message.channel.send("バカ")
     
 client.run(token)
