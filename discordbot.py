@@ -30,7 +30,7 @@ async def on_voice_state_update(member, before, after):
         channel = client.get_channel(alert_channel)
         if after.channel.id == voice_channel: 
             msg = f'{member.name} さんが {after.channel.name} に入室しました！'
-            await channel.send(msg)
+            await client.send_message(channel,msg)
     
     
 client.run(token)
