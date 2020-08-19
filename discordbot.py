@@ -23,7 +23,7 @@ async def on_message(message):
     if message.author.bot:
         return
     
-    if message.content.startswith('/dii'):
+    if message.content == '/dii':
         await message.channel.send("バカ")
     
 client.run(token)
