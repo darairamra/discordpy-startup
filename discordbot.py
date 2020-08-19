@@ -38,7 +38,7 @@ async def sum(ctx, numOne: int, numTwo: int):
  
 @client.event
 async def on_voice_state_update(member, before, after): 
-    if member.name == "Dii" or "だらい":
+    if member.id == "Dii" or "185767477291122689":
         alert_channel = '737270360277254164'
         voice_channel = '250171026988728320'
         channel = client.get_channel(alert_channel)
