@@ -1,5 +1,4 @@
 
-from discord.ext import commands
 import os
 import traceback
 import discord
@@ -7,34 +6,21 @@ from urllib import parse, request
 import re
 import datetime
 import asyncio
-from discord.ext.commands import Bot
 import platform
 import random
 
-
-client = Bot(command_prefix="/", pm_help = False)
+client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
 
 @client.event
-async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
-
-@client.command()
-async def ping(ctx):
-    await ctx.send('pong')
+async def on_message(message):
+    if message.author == client.user:
+        return
     
-@client.command()
-async def dii(ctx):
-    await ctx.send("バカ")
+    if message.content.startswith('/dii'):
+        await client.send_message(message.channel,"バカ")
     
-    
-@client.command()
-async def sum(ctx, numOne: int, numTwo: int):
-    await ctx.send(numOne + numTwo)
-
  
 @client.event
 async def on_voice_state_update(member, before, after): 
