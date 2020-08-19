@@ -9,7 +9,7 @@ import datetime
 import asyncio
 
 client = discord.Client()
-bot = Bot(command_prefix='/')
+bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 
 
