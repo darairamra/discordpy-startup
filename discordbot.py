@@ -14,7 +14,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 
 @client.event
 async def on_ready():
-    channel = client.get_channel(737270360277254)
+    channel = get_channel(737270360277254)
     msg = "起動完了"
     await client.send_message(channel,msg)
             
