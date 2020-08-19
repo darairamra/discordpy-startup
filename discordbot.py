@@ -31,4 +31,16 @@ async def dii(ctx):
 async def sum(ctx, numOne: int, numTwo: int):
     await ctx.send(numOne + numTwo)
 
+ 
+@bot.event
+async def on_voice_state_update(member, before, after): 
+    if member.name == "Dii" or "だらい":
+        alert_channel = bot.get_channel('737270360277254164')
+        voice_channel = bot.get_channel('250171026988728320')
+        if after.channel is voice_channel and channel_numbers == 1: 
+            msg = f'{member.name} さんが {after.channel.name} に入室しました！'
+            await alert_channel.send(msg + channel_members)
+    
+    
+    
 bot.run(token)
