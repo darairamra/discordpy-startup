@@ -5,7 +5,7 @@ import discord
 from urllib import parse, request
 import re
 import datetime
-import asyncio
+import nest_asyncio
 import platform
 import random
 
