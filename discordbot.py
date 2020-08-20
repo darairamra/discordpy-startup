@@ -12,13 +12,13 @@ nest_asyncio.apply()
 
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
-TEST_ID = 737270360277254
+TEST_ID = 737270360277254164
 
 
 @client.event
 async def on_ready():
-   test_channel = discord.Object(id=TEST_ID)
-　　await test_channel.send("起動")
+   channel1 = client.get_channel(TEST_ID)
+   await channel1.send("起動")
             
 @client.event
 async def on_message(message):
