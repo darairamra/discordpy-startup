@@ -36,6 +36,6 @@ async def on_voice_state_update(member, before, after):
     if  after.channel is not None:
         print(member.display_name + ' ' + after.channel)
         channel2 = client.get_channel(TEST_ID)
-        await channel2.send(member.display_name 'が'+ after.channel.name + "にきたぞ")
+        await channel2.send(member.display_name + "が" + after.channel.name + "にきたぞ")
         
 client.run(token)
