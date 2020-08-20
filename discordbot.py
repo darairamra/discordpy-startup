@@ -24,6 +24,18 @@ async def on_message(message):
     
     if message.content == '/dii':
         await message.channel.send("バカ")
-    
+         
+@client.event
+async def on_voice_state_update(member, before, after):
+    if before.channel == after.channel:
+        print('STATS変更')
+        return
+    if after.channel is None:
+        print('退出')
+        return
+    if member.display_name == 'だらい' and after.channel is not None:
+        print(after.channel)
+        channel2 = client.get_channel(TEST_ID)
+        await channel2.send( after.channel.name + "にきたぞ")
         
 client.run(token)
