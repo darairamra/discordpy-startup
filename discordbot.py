@@ -17,7 +17,7 @@ TEST_ID = 737270360277254
 
 @client.event
 async def on_ready():
-   test_channel = client.get_channel(TEST_ID)
+   test_channel = discord.Object(id=TEST_ID)
 　　await test_channel.send("起動")
             
 @client.event
