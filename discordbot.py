@@ -8,6 +8,7 @@ import datetime
 import nest_asyncio
 import platform
 import random
+nest_asyncio.apply()
 
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
