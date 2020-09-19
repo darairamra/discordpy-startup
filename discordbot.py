@@ -26,7 +26,22 @@ async def dii(ctx):
 async def pict(ctx):
     await ctx.send('http://www.no1game.net/games/escapemen/game0056.html')      
 
-      
+@bot.command()
+async def clear(ctx, number = 1):
+    mgs = []
+    number = int(number) #Converting the amount of messages to delete to an integer
+    counter = 0
+        
+    async for x in ctx.message.channel.history(limit = number+1):
+         if counter < number+1:
+             print(x)
+             mgs.append(x)
+             counter += 1
+    await x.channel.delete_messages(mgs)
+    delmsg = await ctx.send(str(counter-1) + "件削除しました")
+    print(delmsg)
+    await delmsg.delete(delay=2)
+  
 @bot.command()
 async def youtube(ctx, *, search):
     query_string = parse.urlencode({'search_query': search})
