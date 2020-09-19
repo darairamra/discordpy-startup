@@ -34,12 +34,12 @@ async def clear(ctx, number = 1):
         
     async for x in ctx.message.channel.history(limit = number+1):
          if counter < number+1:
-             print(x)
+             print(x.content)
              mgs.append(x)
              counter += 1
     await x.channel.delete_messages(mgs)
     delmsg = await ctx.send(str(counter-1) + "件削除しました")
-    print(delmsg)
+    print(delmsg.content)
     await delmsg.delete(delay=2)
   
 @bot.command()
