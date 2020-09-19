@@ -2,30 +2,52 @@
 import os
 import traceback
 import discord
+from discord.ext import commands
 from urllib import parse, request
 import re
 import datetime
+from bs4 import BeautifulSoup
 
 
-client = discord.Client()
+bot = commands.Bot(command_prefix = '/' , description="This is a Helper Bot" )
 token = os.environ['DISCORD_BOT_TOKEN']
 TEST_ID = 737270360277254164
 
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
 
-@client.event
+@bot.command()
+async def dii(ctx):
+    await ctx.send('バカ')
+
+@bot.command()
+async def pict(ctx):
+    await ctx.send('http://www.no1game.net/games/escapemen/game0056.html')      
+
+      
+@bot.command()
+async def youtube(ctx, *, search):
+    query_string = parse.urlencode({'search_query': search})
+    html_content = request.urlopen('http://www.youtube.com/results?' + query_string)
+    OBJ = BeautifulSoup(html_content,features="lxml")
+    html_content.close()
+    search_results = re.findall('"videoId":"(.{11})"' , OBJ.decode())
+    if search_results :
+        pass
+    else:
+        print('nasi')
+    # I will put just the first result, you can loop the response to show more results
+    await ctx.send('https://www.youtube.com/watch?v='+ search_results[0])
+    await ctx.send('https://www.youtube.com/watch?v='+ search_results[4])
+      
+@bot.event
 async def on_ready():
-   channel1 = client.get_channel(TEST_ID)
+   channel1 = bot.get_channel(TEST_ID)
    await channel1.send("起動")
-            
-@client.event
-async def on_message(message):
-    if message.author.bot:
-        return
-    
-    if message.content == '/dii':
-        await message.channel.send("バカ")
          
-@client.event
+          
+@bot.event
 async def on_voice_state_update(member, before, after):
     if before.channel == after.channel:
         print('STATS変更')
@@ -34,8 +56,9 @@ async def on_voice_state_update(member, before, after):
         print('退出')
         return
     if  after.channel is not None:
+        TIME = datetime.datetime.now()
         print(member.display_name + ' ' + after.channel.name)
-        channel2 = client.get_channel(TEST_ID)
-        await channel2.send(member.display_name + "が" + after.channel.name + "にきたぞ")
+        channel2 = bot.get_channel(TEST_ID)
+        await channel2.send(TIME + "///" + member.display_name + "が" + after.channel.name + "にきたぞ")
         
-client.run(token)
+bot.run(token)
