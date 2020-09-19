@@ -6,7 +6,7 @@ from discord.ext import commands
 from urllib import parse, request
 import re
 import datetime
-import BeautifulSoup
+from bs4 import BeautifulSoup
 
 
 bot = commands.Bot(command_prefix = '/' , description="This is a Helper Bot" )
