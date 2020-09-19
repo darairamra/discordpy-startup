@@ -30,7 +30,7 @@ async def pict(ctx):
 async def youtube(ctx, *, search):
     query_string = parse.urlencode({'search_query': search})
     html_content = request.urlopen('http://www.youtube.com/results?' + query_string)
-    OBJ = BeautifulSoup(html_content,features="lxml")
+    OBJ = BeautifulSoup(html_content,"html.parser")
     html_content.close()
     search_results = re.findall('"videoId":"(.{11})"' , OBJ.decode())
     if search_results :
@@ -57,8 +57,9 @@ async def on_voice_state_update(member, before, after):
         return
     if  after.channel is not None:
         TIME = datetime.datetime.now()
+        STR_TIME = TIME.strftime('%Y/%m/%d %H:%M')
         print(member.display_name + ' ' + after.channel.name)
         channel2 = bot.get_channel(TEST_ID)
-        await channel2.send(TIME + "///" + member.display_name + "が" + after.channel.name + "にきたぞ")
+        await channel2.send("[" + STR_TIME +  "]" + member.display_name + "が" + after.channel.name + "にきたぞ")
         
 bot.run(token)
