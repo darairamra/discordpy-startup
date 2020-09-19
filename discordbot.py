@@ -6,6 +6,7 @@ from discord.ext import commands
 from urllib import parse, request
 import re
 import datetime
+import pytz
 from bs4 import BeautifulSoup
 
 
@@ -56,7 +57,7 @@ async def on_voice_state_update(member, before, after):
         print('退出')
         return
     if  after.channel is not None:
-        TIME = datetime.datetime.now()
+        TIME = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
         STR_TIME = TIME.strftime('%Y/%m/%d %H:%M')
         print(member.display_name + ' ' + after.channel.name)
         channel2 = bot.get_channel(TEST_ID)
