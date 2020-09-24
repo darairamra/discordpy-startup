@@ -27,7 +27,7 @@ async def pict(ctx):
     await ctx.send('http://www.no1game.net/games/escapemen/game0056.html')      
 
 @bot.command()
-async def clear(ctx, number = 1):
+async def clear(ctx, number = 1): 
     mgs = []
     number = int(number) #Converting the amount of messages to delete to an integer
     counter = 0
